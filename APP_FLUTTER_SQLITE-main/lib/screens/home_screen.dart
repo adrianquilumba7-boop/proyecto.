@@ -4,6 +4,9 @@ import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'history_screen.dart';
+import 'stats_screen.dart';
+import 'about_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -253,6 +256,49 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                           "⛽ Combustible ahorrado: ${ahorroCombustible.toStringAsFixed(2)} L"),
                       Text("🌱 EcoScore del viaje: $ecoScore / 100"),
+
+                      /// BOTONES DE NAVEGACIÓN
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HistoryScreen(),
+                                  ),
+                                );
+                              },
+                              child: const Text("Historial"),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const StatsScreen(),
+                                  ),
+                                );
+                              },
+                              child: const Text("Estadísticas"),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const AboutScreen(),
+                                  ),
+                                );
+                              },
+                              child: const Text("Info"),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
